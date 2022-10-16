@@ -1,0 +1,24 @@
+
+<br>
+
+
+<div class="div">
+<form>
+<div>
+      <input type="file" name="file" id="file" accept=".txt" (change)="selectFile($event)">
+      <label for="file">
+            Choose File
+      </label>
+     <span class="txt"> {{files1}} </span>
+      
+</div>
+<br>
+<div>
+      <button type="submit" id="upload" (click)="onSubmit()">Upload</button>
+      <label for="upload">
+            <mat-icon>file_upload  </mat-icon> Upload
+      </label> 
+</div>
+</form>
+</div>
+

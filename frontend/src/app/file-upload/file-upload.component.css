@@ -1,0 +1,45 @@
+
+
+input[type="file"]{
+    display: none;
+}
+
+button{
+    display: none;
+}
+
+label{
+    background-color: #e5322d;
+    color: rgb(224, 221, 221);
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 15%;
+
+   
+}
+
+label:hover{
+    background-color: black;
+}
+
+.div{
+    background-color: rgb(224, 221, 221);
+    border-style: solid;
+    width: 50%;
+    padding-left: 1%;
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-75%, -50%);
+}
+
+.txt{
+    font-size: larger;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
