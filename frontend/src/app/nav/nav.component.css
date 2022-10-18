@@ -1,5 +1,8 @@
 h1{
-    color: rgb(224, 221, 221);
+
+    color: rgb(8, 8, 8);
     font-weight: bolder;
-    transform: translate(225%,0%);
+    position:absolute;
+    left: 50%;
+    transform: translate(-40%,0%);
 }

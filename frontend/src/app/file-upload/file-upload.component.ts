@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { forEach } from '@angular/router/src/utils/collection';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
@@ -10,7 +11,7 @@ export class FileUploadComponent implements OnInit {
   files1="No file chosen";
   files2;
   
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private router: Router) { }
 
   ngOnInit() {
   }
@@ -39,6 +40,7 @@ onSubmit(){
   this.http.post<any>("http://localhost:3000/file",formdata).subscribe(response=>{
     console.log(response);
   })
+  this.router.navigateByUrl('/hash');
 }
 
 }

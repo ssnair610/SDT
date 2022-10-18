@@ -1,0 +1,100 @@
+.dropbtn{
+    width: 100%;
+    height: 50px;
+    border-radius: 15px;
+    background-color: rgba(214, 208, 208, 0.975);
+}
+
+.dropdown-content button{
+  
+    display: block;
+    width: 100%;
+    height: 50px;
+}
+
+.dropdown-content:active button{
+   
+    width: 100%;
+    height: 50px;
+}
+
+.dropdown-content{
+    display: none;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+.select{
+    width: 100%;
+    height: 100px;
+}
+
+.dropdown{
+    
+}
+
+.box{
+
+ padding: 20px;
+ transform: translate(-50%, -37%);
+}
+
+
+
+.arrow{
+    text-align: right;
+    position: absolute;
+    transform: translate(-120%, 50%);
+}
+
+.tick{
+    transform: translate(-50%, -420%);
+}
+
+.dot1{
+    transform: translate(-50%, -420%);
+    background-color: green;
+}
+
+.dot2{
+    transform: translate(-50%, -420%);
+}
+
+.dot3{
+    transform: translate(-50%, -420%);
+}
+
+.line11{
+    transform: translate(-8.5%, -820%);
+    background-color: green;
+}
+
+.line1{
+    transform: translate(90.5%, -820%);
+}
+
+.line2{
+    transform: translate(90.5%, -820%);
+}
+
+.line3{
+    transform: translate(190.5%, -820%);
+}
+
+.btn{
+    color: black;
+    background-color: #e5322d;
+    position: relative;
+    top: 88%;
+    left: 87%;
+    border-bottom-right-radius: 20px;
+    border: solid;
+}
+
+.option{
+    width: 100%;
+    height: 50px;
+   
+}

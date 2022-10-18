@@ -7,6 +7,13 @@ input[type="file"]{
 button{
     display: none;
 }
+.up{
+    margin: 0;
+    position: absolute;
+    left: 85%;
+    width: 80px;
+    
+}
 
 label{
     background-color: #e5322d;
@@ -14,8 +21,9 @@ label{
     padding: 10px;
     border-style: solid;
     border-color: black;
-    border-radius: 15%;
-
+    border-radius: 20px;
+    height: 40px;
+    
    
 }
 
@@ -24,22 +32,63 @@ label:hover{
 }
 
 .div{
-    background-color: rgb(224, 221, 221);
+    background-color: #e3e4e6;
     border-style: solid;
-    width: 50%;
-    padding-left: 1%;
-    
-    padding-top: 10px;
-    padding-bottom: 10px;
+    width: 90%;
+    height: 65px;
+   padding: 10px;
     margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-75%, -50%);
+   
+    transform: translate(-50%, 50%);
+    border-radius: 20px;
+}
+
+
+
+hr{
+    width: 100%;
+    border-width: 2px;
+    border-color:black ;
+    
+}
+
+.textarea{
+    width: 90%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+   
+    transform: translate(-50%, -95%);
 }
 
 .txt{
     font-size: larger;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.or{
+    padding: 5px;
+    border-radius: 45%;
+    border: solid;
+    border-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 90%);
+    color:black;
+    background-color: #467ff1;
+    
+    
+}
+
+.box{
+    height: 55%;
+}
+
+.line1{
+    
 }

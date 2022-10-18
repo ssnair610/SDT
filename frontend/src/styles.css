@@ -1,6 +1,118 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-    background-image: url("https://wallpaperaccess.com/full/4062573.jpg");
+ /*   background-image: url("https://wallpaperaccess.com/full/4062573.jpg");
     background-repeat: no-repeat;
     background-size: 110% 700%;
+    */
+}
+.progress{
+    background-image:url("assets/progress1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    
+}
+
+.dot1 {
+    height: 21px;
+    width: 21px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    transform: translate(-50%, -335%);
+    left: 33.33%;
+  }
+
+  .dot2 {
+    height: 21px;
+    width: 21px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    transform: translate(-50%, -335%);
+    left: 66.66%;
+  }
+
+  .dot3 {
+    height: 21px;
+    width: 21px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    transform: translate(-50%, -335%);
+    left: 100%;
+  }
+
+.line1{
+    height: 10px;
+    width: 33.33%;
+    background-color: green;
+    transform: translate(2.5%, -650%);
+    display: inline-block;
+    position: absolute;
+    animation-name: example;
+   animation-duration: 3s;
+
+}
+@keyframes example {
+    0%   { width: 0%;}
+    100% { width: 33.33%;}
+  }
+  
+  .line11{
+    height: 10px;
+    width: 33.33%;
+    background-color: #bbb;
+    transform: translate(2.5%, -650%);
+    display: inline-block;
+    position: absolute;
+   }
+
+.line2{
+    height: 10px;
+    width: 33.33%;
+    background-color: #bbb;
+    transform: translate(100%, -650%);
+    display: inline-block;
+    position: absolute;
+   
+
+}
+
+.line3{
+    height: 10px;
+    width: 33.33%;
+    background-color: #bbb;
+    transform: translate(200%, -650%);
+    display: inline-block;
+    position: absolute;
+   
+
+}
+
+  .tick{
+    height: 21px;
+    width: 21px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    transform: translate(-50%, -335%);
+    left: 0%;
+  }
+
+  .box{
+    width: 60%;
+ 
+    border: solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    background-color: #467ff1;
+    border-width: 15px;
+    border-color: #75a2fc;
+    border-radius: 50px;
 }

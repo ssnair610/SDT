@@ -10,18 +10,28 @@ import { NavComponent } from './nav/nav.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import { HashComponent } from './hash/hash.component';
+
+import { RouteRoutingModule } from './route/route-routing.module';
+import { HomeComponent } from './home/home.component';
+
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
     FileUploadComponent,
-    NavComponent
+    NavComponent,
+    HashComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AngularFileUploaderModule,
     HttpClientModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    RouteRoutingModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
