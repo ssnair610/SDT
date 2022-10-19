@@ -18,7 +18,7 @@ export class ReviewComponent implements OnInit,OnDestroy {
 }
 
   ngOnInit() {
-    this.http.get('./server/uploads/w1.txt', { responseType: 'text' })
+    this.http.get('./server/uploads/w1.txt', { responseType:'text' })
     .subscribe(data => {
       console.log(data);
       this.data=data;
