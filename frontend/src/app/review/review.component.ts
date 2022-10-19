@@ -18,7 +18,8 @@ export class ReviewComponent implements OnInit,OnDestroy {
 }
 
   ngOnInit() {
-    this.http.get('./server/uploads/w1.txt', { responseType:'text' })
+    
+    this.http.get('./server/uploads/w1.txt', { responseType: 'text' })
     .subscribe(data => {
       console.log(data);
       this.data=data;
@@ -31,15 +32,15 @@ export class ReviewComponent implements OnInit,OnDestroy {
      
      
   });
+  
   this.dataPassed=sessionStorage.getItem('name');
     console.log(this.dataPassed)
-  
   //sessionStorage.clear();
   
   }
 
   ngOnDestroy(){
-    //sessionStorage.clear();
+      sessionStorage.clear();
   }
 
 }
