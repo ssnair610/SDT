@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from './../data.service';
+
+
 
 @Component({
   selector: 'app-hash',
@@ -15,10 +18,40 @@ export class HashComponent implements OnInit {
    arrow1=false;
    arrow2=false;
    arrow3=false;
-  constructor() { }
+   senddata=["ss","dd"]
+  combine:string;
+
+   
+  constructor(private ds: DataService) { }
 
   ngOnInit() {
+   
   }
+
+  send1(){
+  let list=[]
+   
+
+    if(this.crypto1!="Encryption Algorithm 1"){
+      list.push(this.crypto1);
+    }
+
+    if(this.crypto2!="Encryption Algorithm 2"){
+      list.push(this.crypto2);
+    }
+
+    if(this.hashing!="Hashing Algorithm"){
+      list.push(this.hashing)
+  }
+    let combine;
+    combine=list.join(",");
+    this.ds.sendData(combine);
+   
+  
+   
+  }
+
+ 
 
   hash(x){
     if(x=='a'){

@@ -36,12 +36,12 @@
     <button  class="option" (click)="crypt2('c')">AES</button>
     <button  class="option" (click)="crypt2('d')">ElGamal</button>
     <button  class="option" (click)="crypt2('e')">Rabin</button>
-    <button  class="option" (click)="crypt12('f')">Elliptic Curve Cryptosystems</button>
+    <button  class="option" (click)="crypt2('f')">Elliptic Curve Cryptosystems</button>
   </div>
 
 </div>
-<br>
 
+<hr>
 <div class="dropdown" >
 
   <button class="dropbtn" (click)="onhash()">{{hashing}} </button> <mat-icon *ngIf="!arrow1" class="arrow">keyboard_arrow_down</mat-icon>
@@ -56,8 +56,8 @@
 
 </div>
 <br>
-
-  <a class="btn" routerLink='/file' mat-button > Next </a>
+<a *ngIf="hashing=='Hashing Algorithm' || crypto1=='Encryption Algorithm 1'" class="btn" style="pointer-events: none;" (click)="send1()" routerLink='/review' mat-button > Next </a>
+  <a *ngIf="hashing!='Hashing Algorithm' && crypto1!='Encryption Algorithm 1'" class="btn" (click)="send1()" routerLink='/review' mat-button > Next </a>
 
 </div>
 </div>

@@ -6,7 +6,12 @@
     border-width: 15px;
     border-color: #75a2fc;
     border-radius: 10%;
+    padding: 10px;
 
+}
+
+.p{
+    transform: translate(0%,30%);
 }
 
 .progress{
@@ -21,7 +26,7 @@
        
 }
 
-h1{
+h2{
     position: absolute;
     left: 40%;
 

@@ -16,13 +16,15 @@ import { RouteRoutingModule } from './route/route-routing.module';
 import { HomeComponent } from './home/home.component';
 
 import {MatButtonModule} from '@angular/material/button';
+import { ReviewComponent } from './review/review.component';
 @NgModule({
   declarations: [
     AppComponent,
     FileUploadComponent,
     NavComponent,
     HashComponent,
-    HomeComponent
+    HomeComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,

@@ -53,7 +53,7 @@ body{
     display: inline-block;
     position: absolute;
     animation-name: example;
-   animation-duration: 3s;
+   animation-duration: 2s;
 
 }
 @keyframes example {
