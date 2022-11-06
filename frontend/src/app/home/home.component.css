@@ -10,8 +10,25 @@
 
 }
 
-.p{
-    transform: translate(0%,30%);
+.card{
+    
+    transform: translate(0%,-20%);
+
+}
+
+.btn1{
+    transform: translate(0%,-50%);
+}
+
+.img{
+    transform: translate(0%,5%);
+}
+
+
+
+h1{
+
+    transform: translate(35%,0%);
 }
 
 .progress{

@@ -17,6 +17,11 @@ import { HomeComponent } from './home/home.component';
 
 import {MatButtonModule} from '@angular/material/button';
 import { ReviewComponent } from './review/review.component';
+
+import {MatGridListModule} from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatStepperModule } from '@angular/material/stepper';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +38,12 @@ import { ReviewComponent } from './review/review.component';
     MatToolbarModule,
     MatIconModule,
     RouteRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatGridListModule,
+    MatStepperModule
+
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
