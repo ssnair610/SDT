@@ -1,12 +1,126 @@
 
-       <mat-horizontal-stepper>
-       <mat-step label="Step 1"> </mat-step>
-         
-       <mat-step label="Step 2"> </mat-step>
+       <mat-horizontal-stepper class="stepper" linear>
+       <mat-step label="Step 1" completed="{{s1}}" >
+              <mat-card class="mat-elevation-z8 card" >
+                     <mat-card-title><h1 align="center">Select File</h1></mat-card-title>
+                     <hr style="background-color: black;">
+                     <mat-card-content>
+                            <div class="div1">
+                            <div  class="textarea">
+                                   <span class="or" >or</span>
+                                   <textarea style="  width: 100%; background-color: #e3e4e6;" rows="3" [(ngModel)]="text" (keyup)="textarea()" ></textarea>
+                                   <br>
+                                   <br>
+                                   <hr>
+                                   </div>
+                                   <br>
+                                   
+                                   <div class="div">
+                            
+                                   <form>
+                                   <div>
+                                         <input type="file" name="file" id="file" accept=".txt" (change)="selectFile($event)" >
+                                         <label class="choose" for="file">Choose File</label>
+                                        <span class="txt"> {{files1}} </span>
+                                        
+                                        
+                                   </div>
+                                   <br>
+                                   <div>
+                                          <mat-card-actions align="end">
+                                          <button mat-button type="submit" id="upload" matStepperNext  (click)="onSubmit()" disabled="{{disable2}}">Next</button>
+                                   </mat-card-actions>
+                                   </div>
+                                   </form>
+                                   </div>
+                        
+                       </div>
+                     </mat-card-content>
 
-       <mat-step label="Done"> </mat-step>
+                   </mat-card>
+       </mat-step>
+         
+       <mat-step label="Step 2" completed="{{s2}}" >
+              <mat-card class="mat-elevation-z8 card" style="height: 500px;" >
+                     <mat-card-title><h2 align="center">Select Hashing and Encryption Algorithms</h2></mat-card-title>
+                     <hr style="background-color: black;">
+                     <mat-card-content>
+                            <p>Encryption Algorithm 1</p>
+                            
+                            <select name="Encryption Algorithm 1" id="E1" class="select" [(ngModel)]="selectE1" (click)="onselect()">
+                                   
+                                   <option value="Encryption Algorithm 1" selected>Encryption Algorithm 1</option>
+                                   <option value="RSA">RSA</option>
+                                   <option value="DES">DES</option>
+                                   <option value="AES">AES</option>
+                                   <option value="ElGamal">ElGamal</option>
+                                   <option value="Rabin">Rabin</option>
+                                   <option value="Elliptic Curve Cryptosystems">Elliptic Curve Cryptosystems</option>
+
+                                 </select>
+                            <br>
+                            <br>
+                            <p>Encryption Algorithm 2 (Optional)</p>
+                                 <select name="Encryption Algorithm 1" id="E1" class="select" [(ngModel)]="selectE2">
+                                   <option value="Encryption Algorithm 1" selected>Encryption Algorithm 2</option>
+                                   <option value="RSA">RSA</option>
+                                   <option value="DES">DES</option>
+                                   <option value="AES">AES</option>
+                                   <option value="ElGamal">ElGamal</option>
+                                   <option value="Rabin">Rabin</option>
+                                   <option value="Elliptic Curve Cryptosystems">Elliptic Curve Cryptosystems</option>
+
+                                 </select>
+                                 
+                                 <br>
+                                 <hr>
+                                 
+                                 <p>Hashing Algorithm</p>
+                                 <select name="Hashing Algorithm" id="E1" class="select" [(ngModel)]="selectH" (click)="onselect()">
+                                   <option value="Hashing Algorithm" selected>Hashing Algorithm</option>
+                                   <option value="RSA">SHA-1</option>
+                                   <option value="DES">SHA-256</option>
+                                   <option value="AES">MD5</option>
+                                   <option value="ElGamal">SNEFRU</option>
+                                   <option value="Rabin">HAVAL</option>
+                                   
+
+                                 </select>
+
+                             
+
+                                 
+                     </mat-card-content>
+                     <mat-card-actions align="end">
+                            <button mat-button matStepperNext (click)="review()" disabled="{{disable}}">Next</button>
+                     </mat-card-actions>
+                     
+                   </mat-card>
+       </mat-step>
+
+       <mat-step label="Done">
+              <mat-card class="mat-elevation-z8 card" >
+                     <mat-card-title><h1 align="center">Review</h1></mat-card-title>
+                     <hr style="background-color: black;">
+                     <mat-card-content>
+                           
+                           <textarea class="data" rows="3" placeholder="{{data}}" disabled></textarea>
+                           
+                     <hr>
+                     Algorithms:
+                     <ul>
+                            <li>{{selectE1}}</li>
+                            <li>{{selectE2}}</li>
+                            <li>{{selectH}}</li>
+                     </ul>
+                     </mat-card-content>
+                     </mat-card>
+       </mat-step>
      </mat-horizontal-stepper>
+ 
+
      
+  
 <!--
 <div class="box">
       

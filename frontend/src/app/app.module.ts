@@ -21,7 +21,9 @@ import { ReviewComponent } from './review/review.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,9 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatButtonModule,
     MatCardModule,
     MatGridListModule,
-    MatStepperModule
+    MatStepperModule,
+    BrowserAnimationsModule,
+    FormsModule
 
     
   ],
