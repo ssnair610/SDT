@@ -13,11 +13,12 @@
 .card{
     
     transform: translate(0%,-20%);
+    border-radius: 20px;
 
 }
 
 .btn1{
-    transform: translate(0%,-50%);
+  color: white;
 }
 
 .img{
@@ -57,4 +58,9 @@ h2{
     left: 80%;
     border-bottom-right-radius: 20px;
     border: solid;
+}
+
+.next{
+    background-color: black;
+    border-radius: 20px;
 }

@@ -12,6 +12,7 @@ export class FileUploadComponent implements OnInit {
   files1="No file chosen";
   files2;
   selectE1="";
+  selectE2="";
   selectH="";
   text="";
   disable=true;

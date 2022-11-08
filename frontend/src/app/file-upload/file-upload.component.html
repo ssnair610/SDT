@@ -1,14 +1,14 @@
 
        <mat-horizontal-stepper class="stepper" linear>
        <mat-step label="Step 1" completed="{{s1}}" >
-              <mat-card class="mat-elevation-z8 card" >
-                     <mat-card-title><h1 align="center">Select File</h1></mat-card-title>
-                     <hr style="background-color: black;">
+              <mat-card class="mat-elevation-z12 card" >
+                     <mat-card-title><h1 align="center">Choose File</h1></mat-card-title>
+                     <hr>
                      <mat-card-content>
                             <div class="div1">
                             <div  class="textarea">
                                    <span class="or" >or</span>
-                                   <textarea style="  width: 100%; background-color: #e3e4e6;" rows="3" [(ngModel)]="text" (keyup)="textarea()" ></textarea>
+                                   <textarea style="  width: 100%; background-color: white;border-radius: 20px;border-color: black; border: solid;" placeholder="  Type Here ..." rows="3" [(ngModel)]="text" (keyup)="textarea()" ></textarea>
                                    <br>
                                    <br>
                                    <hr>
@@ -16,7 +16,7 @@
                                    <br>
                                    
                                    <div class="div">
-                            
+                                         
                                    <form>
                                    <div>
                                          <input type="file" name="file" id="file" accept=".txt" (change)="selectFile($event)" >
@@ -28,7 +28,9 @@
                                    <br>
                                    <div>
                                           <mat-card-actions align="end">
-                                          <button mat-button type="submit" id="upload" matStepperNext  (click)="onSubmit()" disabled="{{disable2}}">Next</button>
+                                          <div class="next">
+                                          <button mat-button type="submit" id="upload" style="color: white;" matStepperNext  (click)="onSubmit()" disabled="{{disable2}}">Next</button>
+                                          </div>
                                    </mat-card-actions>
                                    </div>
                                    </form>
@@ -78,11 +80,11 @@
                                  <p>Hashing Algorithm</p>
                                  <select name="Hashing Algorithm" id="E1" class="select" [(ngModel)]="selectH" (click)="onselect()">
                                    <option value="Hashing Algorithm" selected>Hashing Algorithm</option>
-                                   <option value="RSA">SHA-1</option>
-                                   <option value="DES">SHA-256</option>
-                                   <option value="AES">MD5</option>
-                                   <option value="ElGamal">SNEFRU</option>
-                                   <option value="Rabin">HAVAL</option>
+                                   <option value="SHA-1">SHA-1</option>
+                                   <option value="SHA-256">SHA-256</option>
+                                   <option value="MD5">MD5</option>
+                                   <option value="SNEFRU">SNEFRU</option>
+                                   <option value="HAVAL">HAVAL</option>
                                    
 
                                  </select>
@@ -92,7 +94,9 @@
                                  
                      </mat-card-content>
                      <mat-card-actions align="end">
-                            <button mat-button matStepperNext (click)="review()" disabled="{{disable}}">Next</button>
+                            <div class="next">
+                            <button mat-button matStepperNext (click)="review()" disabled="{{disable}}" style="color: white;">Next</button>
+                            </div>
                      </mat-card-actions>
                      
                    </mat-card>
@@ -104,7 +108,7 @@
                      <hr style="background-color: black;">
                      <mat-card-content>
                            
-                           <textarea class="data" rows="3" placeholder="{{data}}" disabled></textarea>
+                           <textarea class="data" rows="3" placeholder=" {{data}}" disabled></textarea>
                            
                      <hr>
                      Algorithms:
