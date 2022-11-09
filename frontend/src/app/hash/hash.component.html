@@ -1,66 +1,71 @@
-<div class="boundary">
-<div class="box">
-  <div *ngIf="!h && !c1 && !c2">
-  <span class="line11"></span>
-  <span class="line2"></span>
-  <span class="line1"></span>
-<span class="line3"></span>
-<span class="tick"></span>
-<span class="dot1"></span>
-<span class="dot2"></span>
-<span class="dot3"></span>
-  </div>
 
-
-<div class="dropdown" (click)="oncrypto1()">
-  <button class="dropbtn">{{crypto1}}</button><mat-icon *ngIf="!arrow2" class="arrow">keyboard_arrow_down</mat-icon>
-  <mat-icon *ngIf="arrow2" class="arrow">keyboard_arrow_up</mat-icon>
-  <div *ngIf="c1">
-    <button class="option" (click)="crypt1('a')">RSA</button>
-    <button class="option" (click)="crypt1('b')">DES</button>
-    <button class="option" (click)="crypt1('c')">AES</button>
-    <button class="option" (click)="crypt1('d')">ElGamal</button>
-    <button class="option" (click)="crypt1('e')">Rabin</button>
-    <button class="option" (click)="crypt1('f')">Elliptic Curve Cryptosystems</button>
-  </div>
-
+<h1 align="center">Receiver</h1>
+<div>
+<mat-grid-list cols="3" rowHeight="52.5px"  >
+  <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="1"
+      
+      >
+      <h3>Encrypted Data</h3>
+  </mat-grid-tile>
+  <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="1"
+     
+      >
+      <h3>Decrypted Data</h3>
+  </mat-grid-tile>
+  <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="1"
+     
+      >
+      <h3>Time Duration</h3>
+  </mat-grid-tile>
+  <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="7"
+      
+      >
+    
+    <textarea disabled class="mat-elevation-z12" style="width: 80%;height:100%;border: solid;border-radius: 20px;"></textarea>
+  </mat-grid-tile>
+  <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="7"
+     
+      >
+      <textarea disabled class="mat-elevation-z12" style="width: 80%;height:100%;border: solid;border-radius: 20px;"></textarea>
+  </mat-grid-tile>
+  <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="3"
+   
+      >
+      <mat-card class="mat-elevation-z12 card" style="width: 50%;height:90%;border:solid;border-radius:20px" >
+        
+        
+      </mat-card>
+    
+  </mat-grid-tile>
+  <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="1"
+   
+      >
+      <h3>Overall Overhead</h3>
+  </mat-grid-tile>
+  <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="3"
+     
+      >
+      <mat-card class="mat-elevation-z12 card" style="width: 50%;height:90%;border:solid;border-radius:20px" >
+        
+        
+      </mat-card>
+  </mat-grid-tile>
+  
+</mat-grid-list>
 </div>
-<br>
-<div class="dropdown" (click)="oncrypto2()">
-  <p>(Optional)</p>
-  <button class="dropbtn">{{crypto2}}</button> <mat-icon *ngIf="!arrow3" class="arrow">keyboard_arrow_down</mat-icon>
-  <mat-icon *ngIf="arrow3" class="arrow">keyboard_arrow_up</mat-icon>
-  <div *ngIf="c2">
-    <button  class="option" (click)="crypt2('a')">RSA</button>
-    <button  class="option" (click)="crypt2('b')">DES</button>
-    <button  class="option" (click)="crypt2('c')">AES</button>
-    <button  class="option" (click)="crypt2('d')">ElGamal</button>
-    <button  class="option" (click)="crypt2('e')">Rabin</button>
-    <button  class="option" (click)="crypt2('f')">Elliptic Curve Cryptosystems</button>
-  </div>
-
-</div>
-
-<hr>
-<div class="dropdown" >
-
-  <button class="dropbtn" (click)="onhash()">{{hashing}} </button> <mat-icon *ngIf="!arrow1" class="arrow">keyboard_arrow_down</mat-icon>
-  <mat-icon *ngIf="arrow1" class="arrow">keyboard_arrow_up</mat-icon>
-  <div *ngIf="h" >
-    <button class="option" (click)="hash('a')">SHA-1</button>
-    <button class="option" (click)="hash('b')">SHA-256</button>
-    <button class="option" (click)="hash('c')">MD5</button>
-    <button class="option" (click)="hash('d')">SNEFRU</button>
-    <button class="option" (click)="hash('e')">HAVAL</button>
-  </div>
-
-</div>
-<br>
-<a *ngIf="hashing=='Hashing Algorithm' || crypto1=='Encryption Algorithm 1'" class="btn" style="pointer-events: none;" (click)="send1()" routerLink='/review' mat-button > Next </a>
-  <a *ngIf="hashing!='Hashing Algorithm' && crypto1!='Encryption Algorithm 1'" class="btn" (click)="send1()" routerLink='/review' mat-button > Next </a>
-
-</div>
-</div>
-
-
-

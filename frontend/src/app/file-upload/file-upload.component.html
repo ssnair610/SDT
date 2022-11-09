@@ -103,7 +103,7 @@
        </mat-step>
 
        <mat-step label="Done">
-              <mat-card class="mat-elevation-z8 card" >
+              <mat-card class="mat-elevation-z8 card" style="height: 480px;" >
                      <mat-card-title><h1 align="center">Review</h1></mat-card-title>
                      <hr style="background-color: black;">
                      <mat-card-content>
@@ -118,6 +118,11 @@
                             <li>{{selectH}}</li>
                      </ul>
                      </mat-card-content>
+                     <mat-card-actions align="end">
+                            <div class="next">
+                            <button mat-button routerLink='/hash' (click)="review()" disabled="{{disable}}" style="color: white;">Send</button>
+                            </div>
+                     </mat-card-actions>
                      </mat-card>
        </mat-step>
      </mat-horizontal-stepper>
