@@ -15,7 +15,7 @@ export class HashComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-   
+    // TODO: Get output textarea elements by id and subsume benchmark values
   }
 
   

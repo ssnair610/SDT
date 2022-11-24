@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { forEach } from '@angular/router/src/utils/collection';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { publicEncrypt } from 'crypto';
 
 @Component({
   selector: 'app-file-upload',
@@ -22,16 +23,74 @@ export class FileUploadComponent implements OnInit {
   data;
 
 
+  encryptData = (data:string, algorithm:string) => {
+    switch (algorithm) {
+      case "RSA":
+        // publicEncrypt()
+        // TODO: python mli script to transform data to rsa-encrypted
+        break;
+      case "AES":
+        // TODO: python mli script to transform data to aes-encrypted
+        break;
+      case "DES":
+        // TODO: python mli script to transform data to des-encrypted
+        break;
+    
+      case "ElGamal":
+        // TODO: python mli script to transform data to elGamal-encrypted
+        break;
+
+      case "Rabin":
+        // TODO: python mli script to transform data to rabin-encrypted
+        break;
+    
+      default:
+        break;
+    }
+
+    return data
+  }
+
+  hashData = (data:string, algorithm:string) => {
+    switch (algorithm) {
+      case "SHA-1":
+        // TODO: python mli script to transform data to sha-1-hashed
+        break;
+    
+      case "SHA-256":
+        // TODO: python mli script to transform data to sha-1-hashed
+        break;
+    
+      case "MD5":
+        // TODO: python mli script to transform data to sha-1-hashed
+        break;
+    
+      case "SNEFRU":
+        // TODO: python mli script to transform data to sha-1-hashed
+        break;
+    
+      case "HAVAL":
+        // TODO: python mli script to transform data to sha-1-hashed
+        break;
+    
+      default:
+        break;
+    }
+  }
 
   constructor(private http:HttpClient,private router: Router) { }
 
   ngOnInit() {
     
-
     if((this.selectE1=="" || this.selectE1=="Encryption Algorithm 1")||(this.selectH=="" || this.selectH=="Hashing Algorithm")){
       this.disable=true
     }
-    else{
+    else {
+      // TODO: if file selected, copy file content to data
+      this.encryptData(this.data, this.selectE1)
+      this.encryptData(this.data, this.selectE2)
+      this.hashData(this.data, this.selectH)
+
       this.disable=false
     }
   }
