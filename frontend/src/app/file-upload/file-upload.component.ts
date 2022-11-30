@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { forEach } from '@angular/router/src/utils/collection';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { publicEncrypt } from 'crypto';
+import * as CryptoJS from 'crypto-js'
 
 @Component({
   selector: 'app-file-upload',
@@ -26,13 +25,14 @@ export class FileUploadComponent implements OnInit {
   encryptData = (data:string, algorithm:string) => {
     switch (algorithm) {
       case "RSA":
-        // publicEncrypt()
         // TODO: python mli script to transform data to rsa-encrypted
         break;
       case "AES":
+        CryptoJS.AES.encrypt(data, "key")
         // TODO: python mli script to transform data to aes-encrypted
         break;
       case "DES":
+        CryptoJS.DES.encrypt(data, "key")
         // TODO: python mli script to transform data to des-encrypted
         break;
     
@@ -54,22 +54,27 @@ export class FileUploadComponent implements OnInit {
   hashData = (data:string, algorithm:string) => {
     switch (algorithm) {
       case "SHA-1":
+        CryptoJS.SHA1(data)
         // TODO: python mli script to transform data to sha-1-hashed
         break;
     
       case "SHA-256":
+        CryptoJS.SHA256(data)
         // TODO: python mli script to transform data to sha-1-hashed
         break;
     
       case "MD5":
+        CryptoJS.MD5(data)
         // TODO: python mli script to transform data to sha-1-hashed
         break;
     
       case "SNEFRU":
+        
         // TODO: python mli script to transform data to sha-1-hashed
         break;
     
       case "HAVAL":
+        
         // TODO: python mli script to transform data to sha-1-hashed
         break;
     

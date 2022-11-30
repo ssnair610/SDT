@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "crypto-js": "registry:dt/crypto-js#3.1.4+20170125080350"
+  }
+}
