@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import * as CryptoJS from 'crypto-js'
+import * as CryptoJS from 'crypto-js' // Public encryptions
 
 @Component({
   selector: 'app-file-upload',
@@ -22,17 +22,23 @@ export class FileUploadComponent implements OnInit {
   data;
 
 
+  // Find another library to fill the vacant ones up. [Vivek]
+  // Generate Public-Private Key pairs. [Together]
+  // Server side (all of this operation) [Ganith]
+
   encryptData = (data:string, algorithm:string) => {
+    // Generate a Public-Private Key generation
+    let key = "secret"
     switch (algorithm) {
       case "RSA":
         // TODO: python mli script to transform data to rsa-encrypted
         break;
       case "AES":
-        CryptoJS.AES.encrypt(data, "key")
+        CryptoJS.AES.encrypt(data, key)
         // TODO: python mli script to transform data to aes-encrypted
         break;
       case "DES":
-        CryptoJS.DES.encrypt(data, "key")
+        CryptoJS.DES.encrypt(data, key)
         // TODO: python mli script to transform data to des-encrypted
         break;
     
@@ -91,10 +97,9 @@ export class FileUploadComponent implements OnInit {
       this.disable=true
     }
     else {
-      // TODO: if file selected, copy file content to data
-      this.encryptData(this.data, this.selectE1)
-      this.encryptData(this.data, this.selectE2)
-      this.hashData(this.data, this.selectH)
+      this.encryptData(this.data, this.selectE1) //Encrypting based on first alg
+      this.encryptData(this.data, this.selectE2) //Encrypting based on second alg
+      this.hashData(this.data, this.selectH) //Hashing wrt alg
 
       this.disable=false
     }
