@@ -23,6 +23,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { FormsModule } from '@angular/forms';
     MatGridListModule,
     MatStepperModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    MatProgressSpinnerModule
 
     
   ],

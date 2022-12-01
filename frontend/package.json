@@ -15,7 +15,7 @@
     "@angular/cdk": "^6.4.7",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
-    "@angular/core": "^6.1.0",
+    "@angular/core": "^6.1.10",
     "@angular/forms": "^6.1.0",
     "@angular/http": "^6.1.0",
     "@angular/material": "^6.4.7",
@@ -27,11 +27,11 @@
     "core-js": "^2.5.4",
     "express": "^4.18.2",
     "multer": "^1.4.5-lts.1",
-    "rxjs": "~6.2.0",
+    "rxjs": "^6.2.2",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.8.0",
+    "@angular-devkit/build-angular": "^0.8.9",
     "@angular/cli": "~6.2.1",
     "@angular/compiler-cli": "^6.1.0",
     "@angular/language-service": "^6.1.0",
