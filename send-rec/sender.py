@@ -19,6 +19,7 @@ def send_file(filename, host, port):
     """
 
     filesize = os.path.getsize(filename)
+    print(f"{filename} size: {filesize}")
 
     socket_ref = socket.socket()
     print(f"[+] Connecting to {host}:{port}")
@@ -27,7 +28,10 @@ def send_file(filename, host, port):
     print("[+] Connected.")
 
     socket_ref.send(f"{filename}{SEPARATOR}{filesize}".encode())
-    progress = tqdm.tqdm(range(filesize), f"Sending {filename}", unit="B", unit_scale=True, unit_divisor=1024)
+    progress = tqdm.tqdm(
+        range(filesize),
+        f"Sending {filename}",
+        unit="B", unit_scale=True, unit_divisor=1024)
 
     with open(filename, "rb") as file_b:
         while True:
@@ -38,6 +42,7 @@ def send_file(filename, host, port):
 
             socket_ref.sendall(bytes_read)
             progress.update(len(bytes_read))
+        file_b.flush()
 
     socket_ref.close()
     print(f"[+] Connection to {host}:{port} closed.")

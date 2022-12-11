@@ -26,8 +26,8 @@ filename = os.path.basename(filename)
 filesize = int(filesize)
 
 progress = tqdm.tqdm(
-    range(filesize), 
-    f"Receiving {filename}", 
+    range(filesize),
+    f"Receiving {filename}",
     unit="B", unit_scale=True, unit_divisor=1024
     )
 
@@ -40,6 +40,8 @@ with open(filename, "wb") as file_b:
 
         file_b.write(bytes_read)
         progress.update(len(bytes_read))
+    
+    file_b.flush() # Prompt I/O Buffer to write immediately
 
 client_socket.close()
 socket_ref.close()
