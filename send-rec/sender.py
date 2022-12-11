@@ -1,37 +1,59 @@
+"""sender module
+"""
+
 import socket
 import tqdm
 import os
 import argparse
 
 SEPARATOR = "<SEPARATOR>"
-BUFFER_SIZE = 1024 * 4 
+BUFFER_SIZE = 1024 * 4
 
-def send_file(filename, host, port):
+def send_file(filename:str, host:str, port:str):
+    """Sends a file given its name to a designated host IP and port address/number
+
+    Args:
+        filename (str): Name of the file (if possible with relative path)
+        host (str): expectant reciever's IP address
+        port (str): expactant port address for the reciever
+    """
 
     filesize = os.path.getsize(filename)
-    s = socket.socket()
+
+    socket_ref = socket.socket()
     print(f"[+] Connecting to {host}:{port}")
-    s.connect((host, port))
+
+    socket_ref.connect((host, port))
     print("[+] Connected.")
-    s.send(f"{filename}{SEPARATOR}{filesize}".encode())
+
+    socket_ref.send(f"{filename}{SEPARATOR}{filesize}".encode())
     progress = tqdm.tqdm(range(filesize), f"Sending {filename}", unit="B", unit_scale=True, unit_divisor=1024)
-    with open(filename, "rb") as f:
+
+    with open(filename, "rb") as file_b:
         while True:
-            bytes_read = f.read(BUFFER_SIZE)
-            if not bytes_read:
-                break
-            s.sendall(bytes_read)
+            bytes_read = file_b.read(BUFFER_SIZE)
+
+            if not bytes_read: # Sending empty (close connection)
+                break # Proceed to connection closure
+
+            socket_ref.sendall(bytes_read)
             progress.update(len(bytes_read))
-    s.close()
+
+    socket_ref.close()
+    print(f"[+] Connection to {host}:{port} closed.")
 
 if __name__ == "__main__":
-    import argparse
+    # import argparse
     parser = argparse.ArgumentParser()
+
     parser.add_argument("file", help="File name to send")
     parser.add_argument("host", help="The host/IP address of the receiver")
     parser.add_argument("-p", "--port", help="Port to use, default is 5001", default=5001)
+
     args = parser.parse_args()
+
     filename = args.file
     host = args.host
     port = args.port
+
     send_file(filename, host, port)
