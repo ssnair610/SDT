@@ -17,7 +17,7 @@ socket_ref.bind((SERVER_HOST, SERVER_PORT))
 socket_ref.listen(5)
 print(f"[*] Listening as {SERVER_HOST}:{SERVER_PORT}")
 
-client_socket, address = s.accept()
+client_socket, address = socket_ref.accept()
 print(f"[+] {address} is connected.")
 
 received = client_socket.recv(BUFFER_SIZE).decode()
