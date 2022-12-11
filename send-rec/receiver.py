@@ -11,10 +11,10 @@ SERVER_PORT = 5001
 BUFFER_SIZE = 1024 * 4
 SEPARATOR = "<SEPARATOR>"
 
-s = socket.socket()
-s.bind((SERVER_HOST, SERVER_PORT))
+socket_ref = socket.socket()
+socket_ref.bind((SERVER_HOST, SERVER_PORT))
 
-s.listen(5)
+socket_ref.listen(5)
 print(f"[*] Listening as {SERVER_HOST}:{SERVER_PORT}")
 
 client_socket, address = s.accept()
@@ -24,7 +24,12 @@ received = client_socket.recv(BUFFER_SIZE).decode()
 filename, filesize = received.split(SEPARATOR)
 filename = os.path.basename(filename)
 filesize = int(filesize)
-progress = tqdm.tqdm(range(filesize), f"Receiving {filename}", unit="B", unit_scale=True, unit_divisor=1024)
+
+progress = tqdm.tqdm(
+    range(filesize), 
+    f"Receiving {filename}", 
+    unit="B", unit_scale=True, unit_divisor=1024
+    )
 
 with open(filename, "wb") as file_b:
     while True:
@@ -37,4 +42,4 @@ with open(filename, "wb") as file_b:
         progress.update(len(bytes_read))
 
 client_socket.close()
-s.close()
+socket_ref.close()

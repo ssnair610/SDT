@@ -9,7 +9,7 @@ import argparse
 SEPARATOR = "<SEPARATOR>"
 BUFFER_SIZE = 1024 * 4
 
-def send_file(filename:str, host:str, port:str):
+def send_file(filename, host, port):
     """Sends a file given its name to a designated host IP and port address/number
 
     Args:
