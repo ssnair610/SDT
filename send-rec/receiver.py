@@ -40,7 +40,7 @@ with open(filename, "wb") as file_b:
 
         file_b.write(bytes_read)
         progress.update(len(bytes_read))
-    
+
     file_b.flush() # Prompt I/O Buffer to write immediately
 
 client_socket.close()
