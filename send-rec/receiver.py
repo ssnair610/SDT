@@ -11,7 +11,7 @@ SERVER_PORT = 5001
 BUFFER_SIZE = 1024 * 4
 SEPARATOR = "<SEPARATOR>"
 
-socket_ref = socket.socket(proto=0)
+socket_ref = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM, proto=socket.IPPROTO_TCP)
 socket_ref.bind((SERVER_HOST, SERVER_PORT))
 
 socket_ref.listen(5)
