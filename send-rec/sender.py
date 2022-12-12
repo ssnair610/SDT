@@ -2,9 +2,9 @@
 """
 
 import socket
-import tqdm
 import os
 import argparse
+import tqdm
 
 SEPARATOR = "<SEPARATOR>"
 BUFFER_SIZE = 1024 * 4
