@@ -31,7 +31,7 @@ progress = tqdm.tqdm(
     unit="B", unit_scale=True, unit_divisor=1024
     )
 
-with open(filename, "wb") as file_b:
+with open("inbound/" + filename, "wb") as file_b:
     while True:
         bytes_read = client_socket.recv(BUFFER_SIZE)
 
