@@ -6,7 +6,5 @@ The repository relies on a set of dependencies. To make the installation process
 
 <h2> In CLI, perform the following </h2>
 <code>
-chmod +x runme.sh
-
 ./runme.sh
 </code>
