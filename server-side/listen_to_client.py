@@ -5,8 +5,9 @@ import socket
 import os
 import tqdm
 
-SERVER_HOST = "0.0.0.0"
-SERVER_PORT = 5001
+
+SERVER_HOST = "172.31.24.130"
+SERVER_PORT = 12000
 
 BUFFER_SIZE = 1024 * 4
 SEPARATOR = "<SEPARATOR>"
