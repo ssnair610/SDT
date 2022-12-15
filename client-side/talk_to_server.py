@@ -5,9 +5,17 @@ import socket
 import os
 import argparse
 import tqdm
+import json
 
 SEPARATOR = "<SEPARATOR>"
 BUFFER_SIZE = 1024 * 4
+
+def fetch_config(config_filename:str='config.json') -> dict:
+    config_file = open(config_filename)
+    configuration = json.load(config_file)
+    config_file.close()
+
+    return configuration
 
 def send_file(filename, host, port):
     """Sends a file given its name to a designated host IP and port address/number
@@ -18,6 +26,7 @@ def send_file(filename, host, port):
         port (str): expactant port address for the reciever
     """
 
+    filename = "outbound/" + filename
     filesize = os.path.getsize(filename)
     print(f"{filename} size: {filesize}")
 
@@ -51,9 +60,11 @@ if __name__ == "__main__":
     # import argparse
     parser = argparse.ArgumentParser()
 
+    configuration = fetch_config()
+
     parser.add_argument("file", help="File name to send")
-    parser.add_argument("host", help="The host/IP address of the receiver")
-    parser.add_argument("-p", "--port", help="Port to use, default is 12000", default=12000)
+    parser.add_argument("-host", help="The host/IP address of the receiver", default=configuration['serverIP'])
+    parser.add_argument("-p", "--port", help=f"Port to use, default is {configuration['vanilla port']}", default=configuration['vanilla port'])
 
     args = parser.parse_args()
 
