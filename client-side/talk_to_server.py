@@ -21,7 +21,7 @@ def send_file(filename, host, port):
     filesize = os.path.getsize(filename)
     print(f"{filename} size: {filesize}")
 
-    socket_ref = socket.socket()
+    socket_ref = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM, proto=socket.IPPROTO_TCP)
     print(f"[+] Connecting to {host}:{port}")
 
     socket_ref.connect((host, port))
@@ -53,7 +53,7 @@ if __name__ == "__main__":
 
     parser.add_argument("file", help="File name to send")
     parser.add_argument("host", help="The host/IP address of the receiver")
-    parser.add_argument("-p", "--port", help="Port to use, default is 5001", default=5001)
+    parser.add_argument("-p", "--port", help="Port to use, default is 12000", default=12000)
 
     args = parser.parse_args()
 
