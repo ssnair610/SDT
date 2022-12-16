@@ -5,7 +5,6 @@ import socket
 import os
 import tqdm
 
-
 SERVER_HOST = "172.31.24.130"
 SERVER_PORT = 12000
 
