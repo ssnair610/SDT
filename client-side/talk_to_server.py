@@ -9,13 +9,16 @@ import json
 import sys
 import os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+__home__ = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(__home__))
+__home__ += "/"
+
 from mytoolkit.txttag import TextTag as tag
 
 SEPARATOR = "<SEPARATOR>"
 BUFFER_SIZE = 1024 * 4
 
-def fetch_config(config_filename:str='config.json') -> dict:
+def fetch_config(config_filename:str=f'{__home__}config.json') -> dict:
     config_file = open(config_filename)
     configuration = json.load(config_file)
     config_file.close()
@@ -34,9 +37,9 @@ def send_file(filename:str, host:str, port:str):
 
     if filename == '../':
         zipped = True
-        filename = shutil.make_archive(f"outbound/{hash((host, port))}", 'zip', 'outbound')
+        filename = shutil.make_archive(f"{__home__}outbound/{hash((host, port))}", 'zip', f'{__home__}outbound')
     else:
-        filename = "outbound/" + filename
+        filename = f"{__home__}outbound/{filename}"
     
     filesize = os.path.getsize(filename)
     print(f"{tag.id.b()}{filename}{tag.info} size: {tag.info.b()}{filesize}{tag.close}")
@@ -98,4 +101,3 @@ if __name__ == "__main__":
     port = args.port
 
     send_file(filename, host, port)
-
