@@ -7,10 +7,13 @@ import tqdm
 import sys
 import os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+__home__ = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(__home__))
+__home__ += "/"
+
 from mytoolkit.txttag import TextTag as tag
 
-config_file = open('config.json', 'r')
+config_file = open(f'{__home__}config.json', 'r')
 configuration = json.load(config_file)
 
 SERVER_HOST = configuration['serverIP']
@@ -41,7 +44,7 @@ progress = tqdm.tqdm(
     unit="B", unit_scale=True, unit_divisor=1024
     )
 
-with open("inbound/" + filename, "wb") as file_b:
+with open(f"{__home__}inbound/{filename}", "wb") as file_b:
     while True:
         bytes_read = client_socket.recv(BUFFER_SIZE)
 
