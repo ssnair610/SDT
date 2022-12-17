@@ -57,7 +57,15 @@ with open(f"{__home__}inbound/{filename}", "wb") as file_b:
 
     file_b.flush() # Prompt I/O Buffer to write immediately
 
-shutil.unpack_archive(f"{__home__}inbound/{filename}", f"{__home__}inbound/{'.'.join(address)}", 'zip')
 
 client_socket.close()
 socket_ref.close()
+
+targetDir = os.path.splitext(f"{__home__}inbound/{filename}")[0]
+shutil.unpack_archive(f"{__home__}inbound/{filename}", targetDir, 'zip')
+
+try:
+    os.remove(f"{__home__}inbound/{filename}")
+except OSError as e:
+    print (f"\r\n{tag.error.b()}ERROR:{tag.error}{e.strerror}{tag.close}")
+    print (f"\r\n{tag.error.b()}ERROR:{tag.error}{e.code}{tag.close}")
