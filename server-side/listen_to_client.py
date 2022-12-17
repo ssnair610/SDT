@@ -1,12 +1,22 @@
-"""receiver module
+"""wait for client response
 """
 
 import socket
-import os
+import json
 import tqdm
+import sys
+import os
 
-SERVER_HOST = "172.31.24.130"
-SERVER_PORT = 12000
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from mytoolkit.txttag import TextTag as tag
+
+config_file = open('config.json', 'r')
+configuration = json.load(config_file)
+
+SERVER_HOST = configuration['serverIP']
+SERVER_PORT = configuration['vanilla port']
+
+config_file.close()
 
 BUFFER_SIZE = 1024 * 4
 SEPARATOR = "<SEPARATOR>"
@@ -15,10 +25,10 @@ socket_ref = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM, proto
 socket_ref.bind((SERVER_HOST, SERVER_PORT))
 
 socket_ref.listen(5)
-print(f"[*] Listening as {SERVER_HOST}:{SERVER_PORT}")
+print(f"{tag.info.b()}[*]{tag.info} Listening as {tag.id}{SERVER_HOST}{tag.white}:{tag.id}{SERVER_PORT}{tag.close}")
 
 client_socket, address = socket_ref.accept()
-print(f"[+] {address} is connected.")
+print(f"{tag.info.b()}[+] {tag.id}{address}{tag.info} is connected.{tag.close}")
 
 received = client_socket.recv(BUFFER_SIZE).decode()
 filename, filesize = received.split(SEPARATOR)
@@ -27,7 +37,7 @@ filesize = int(filesize)
 
 progress = tqdm.tqdm(
     range(filesize),
-    f"Receiving {filename}",
+    f"Receiving {tag.id}{filename}{tag.close}",
     unit="B", unit_scale=True, unit_divisor=1024
     )
 
