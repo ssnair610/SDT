@@ -8,12 +8,13 @@ import sys
 import os
 import re
 
-__home__ = os.path.abspath(__file__)
-sys.path.append(os.path.dirname(os.path.dirname(__home__)))
+__home__ = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(__home__))
+__home__ += "/"
+
 from mytoolkit.txttag import TextTag as tag
 
 if __name__ == "__main__":
-    # import argparse
     parser = argparse.ArgumentParser()
 
     parser.add_argument("network", help="Network Adaptor Name")
@@ -25,23 +26,23 @@ if __name__ == "__main__":
     port = args.port
 
     proc = subprocess.check_output("ipconfig").decode('utf-8')
-    findings = re.findall(r'([\w\-\* ]*\w):[\w\-\*\:\.\s]+?IPv4 Address. . . . . . . . . . . : ([\d\.]*)', proc)
+    findings = re.findall(r'([\w\-\* ]*\w):[\w\-\*\%\=\<\>\[\]\:\.\s]+?IPv4 Address. . . . . . . . . . . : (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})', proc)
 
     IPMap = dict()
 
     for finding in findings:
         IPMap[finding[0]] = finding[1]
 
-    config_file = open(__home__ + "config.json", "r")
+    config_file = open(f"{__home__}config.json", "r")
     
     configuration = json.load(config_file)
 
     # configuration['serverIP'] = IPMap['Wireless LAN adapter Wi-Fi']
     try:
         configuration['serverIP'] = IPMap[network]
-    
-    except KeyError:
-        print(f'{tag.error.b()}ERROR:{tag.error} Adapter not recognized{tag.close}')
+        print(f'{tag.info}Found {tag.id}{network}{tag.info.b()} local IP Address.{tag.info} Processing...{tag.close}')
+    except KeyError as e:
+        print(f'{tag.error.b()}ERROR:{tag.error} Adapter not recognized:{tag.id}{e}{tag.close}')
         exit(1)
 
     if port is not None:
@@ -49,7 +50,7 @@ if __name__ == "__main__":
     
         config_file.close()
     
-    config_file = open(__home__ + "config.json", "w")
+    config_file = open(f"{__home__}config.json", "w")
     
     json.dump(configuration, config_file, indent=4)
     
