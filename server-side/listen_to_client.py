@@ -2,6 +2,7 @@
 """
 
 import socket
+import shutil
 import json
 import tqdm
 import sys
@@ -55,6 +56,8 @@ with open(f"{__home__}inbound/{filename}", "wb") as file_b:
         progress.update(len(bytes_read))
 
     file_b.flush() # Prompt I/O Buffer to write immediately
+
+shutil.unpack_archive(f"{__home__}inbound/{filename}", f"{__home__}inbound/{'.'.join(address)}", 'zip')
 
 client_socket.close()
 socket_ref.close()
