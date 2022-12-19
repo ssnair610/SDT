@@ -15,15 +15,15 @@ sys.path.append(os.path.dirname(__home__))
 from mytoolkit.txttag import TextTag as tag
 
 class fileThinker:
-	def __init__(self, sourceFile:str, targetFile:str, createKey = True, asymmetricKey = True, keyAddress:str = '') -> None:
-		self.ponder(questionFile=sourceFile, answerFile=targetFile, createKey=createKey, assymetricKey=asymmetricKey, keyAddress=keyAddress)
+	def __init__(self, sourceFile:str, targetFile:str, createKey = True, asymmetricKey = False, keyAddress:str = '') -> None:
+		self.ponder(questionFile=sourceFile, answerFile=targetFile, createKey=createKey, asymetricKey=asymmetricKey, keyAddress=keyAddress)
 
-	def ponder(self, questionFile:str, answerFile:str, createKey = True, assymetricKey = False, keyAddress:str = '') -> None:
+	def ponder(self, questionFile:str, answerFile:str, createKey = True, asymetricKey = False, keyAddress:str = '') -> None:
 		try:
 			shutil.copyfile(questionFile, answerFile)
 			
 			if createKey:
-				self.__kaddr:str = keymaker.generateAtDir(os.path.dirname(questionFile)) if keyAddress == '' else keymaker.generateAtDir(keyAddress, asym=assymetricKey)
+				self.__kaddr:str = keymaker.generateAtDir(os.path.dirname(questionFile), asym=asymetricKey) if keyAddress == '' else keymaker.generateAtDir(keyAddress, asym=asymetricKey)				
 			else:
 				self.__kaddr:str = ''
 
