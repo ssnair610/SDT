@@ -62,10 +62,5 @@ with open(inbound_file_addr, "wb") as file_b:
 client_socket.close()
 socket_ref.close()
 
-targetDir = os.path.splitext(inbound_file_addr)[0]
-shutil.unpack_archive(inbound_file_addr, targetDir, 'zip')
-
-try:
-    os.remove(inbound_file_addr)
-except OSError as e:
-    print (f"\r\n{tag.error.b()}ERROR:{tag.error}{e.strerror}{tag.close}")
+targetDir = os.path.splitext(os.path.splitext(inbound_file_addr)[0])[0]
+# shutil.unpack_archive(inbound_file_addr, targetDir, 'zip')
