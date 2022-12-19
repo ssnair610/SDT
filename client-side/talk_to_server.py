@@ -37,7 +37,7 @@ def send_file(filename:str, host:str, port:str):
 
     if filename == '../':
         zipped = True
-        filename = shutil.make_archive(f"{__home__}outbound/{hash((host, port))}", 'zip', f'{__home__}outbound')
+        filename = shutil.make_archive(f"{__home__}client{hash((host, port))}", 'zip', f'{__home__}outbound')
     else:
         filename = f"{__home__}outbound/{filename}"
     
@@ -69,7 +69,7 @@ def send_file(filename:str, host:str, port:str):
             file_b.flush()
 
         socket_ref.close()
-        print(f"{tag.info.b()}[+]{tag.info} Connection to {tag.info.b()}{host}{tag.white}:{tag.info.b()}{port}{tag.info} closed.{tag.close}")
+        print(f"\n\r{tag.info.b()}[+]{tag.info} Connection to {tag.info.b()}{host}{tag.white}:{tag.info.b()}{port}{tag.info} closed.{tag.close}")
 
     except socket.timeout:
         print(f"\n\r{tag.error.b()}[-]{tag.error} Connection failed. Server connection timeout.{tag.close}")
