@@ -88,7 +88,8 @@ def pack_and_ship(host:str, port:str) -> None:
             print(f"\n\r{tag.error.b()}[-]{tag.error} Encountered runtime error:\n\r{tag.close}{e}")
         
         finally:
-            os.remove(package)
+            pass
+            # os.remove(package)
     
     except Exception as e:
         print(f'\r\n{tag.error.b()}ERROR:{tag.error} package failure: {tag.close}\n\r{e}')
