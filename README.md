@@ -12,5 +12,5 @@ The repository relies on a set of dependencies. To make the installation process
 <br> You will be prompted with server setup. If allowed (Y), you will be prompted to provide network adapter name. </br>
 <br> In case setup fails or if you opt out of it, you can manually set it up with the command sequence shown below. </br><br>
 <code>
-./server-side/calibrate.py <text style="color:cyan">'Network Adapter'</text>
+./server-side/calibrate.py <text style="color:cyan">'Network Adapter' 'IP address of requested server'</text>
 </code>
