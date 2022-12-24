@@ -3,7 +3,6 @@ import os
 
 __home__ = os.path.dirname(__file__)
 sys.path.append(os.path.dirname(os.path.dirname(__home__)))
-__home__ += "/"
 
 from mytoolkit.txttag import TextTag as tag
 import core.custom_encrypt as custom_enc
@@ -14,7 +13,7 @@ class des:
         try:
             des_instance = custom_enc.des(key[:8])
 
-            print(f"{tag.info.b()}[*]{tag.info} Encrypting: {tag.id}{dataFile.name[:-15]}...{tag.close}")
+            print(f"{tag.info.b()}[*]{tag.info} Encrypting: {tag.id}{dataFile.name}{tag.close}")
 
             try:
                 dataFile.seek(0)
@@ -34,7 +33,7 @@ class des:
     def encryptionstr(data:str, key):
         des_instance = custom_enc.des(key[:8])
 
-        print(f"{tag.info.b()}[*]{tag.info} Encrypting: {tag.id}{data[:-15]}...{tag.close}")
+        print(f"{tag.info.b()}[*]{tag.info} Encrypting: {tag.id}{data}{tag.close}")
 
         try:
             ciphertext = des_instance.encrypt(data.encode(), padmode=custom_enc.PAD_PKCS5)
@@ -51,7 +50,7 @@ class des:
         try:
             des_instance = custom_enc.des(key[:8])
             
-            print(f"{tag.info.b()}[*]{tag.info} Decrypting: {tag.id}{dataFile.name[:-15]}...{tag.close}")
+            print(f"{tag.info.b()}[*]{tag.info} Decrypting: {tag.id}{dataFile.name}{tag.close}")
         
             try:
                 dataFile.seek(0)
@@ -65,7 +64,7 @@ class des:
                 return plaintext
             
             except Exception as e:
-                print(f"{tag.error.b()}[-] ERROR:{tag.error} Encryption failed.{tag.close}\r\n{e}")
+                print(f"{tag.error.b()}[-] ERROR:{tag.error} Decryption failed.{tag.close}\r\n{e}")
                 raise e
         
         except Exception as e:
@@ -91,10 +90,9 @@ class des:
                 return plaintext
             
             except Exception as e:
-                print(f"{tag.error.b()}[-] ERROR:{tag.error} Encryption failed.{tag.close}\r\n{e}")
+                print(f"{tag.error.b()}[-] ERROR:{tag.error} Decryption failed.{tag.close}\r\n{e}")
                 raise e
         
         except Exception as e:
             print(f"{tag.error.b()}[-] ERROR:{tag.error} DES instance failed to initialize.{tag.close}\r\n{e}")
             raise e
-        

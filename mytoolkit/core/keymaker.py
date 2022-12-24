@@ -64,5 +64,5 @@ def getFromFile(filename:str):
         return sym_key
     
     else:
-        print(f"{tag.error.b()}[-] ERROR:{tag.error} Key extension not recognized.{tag.close}\r\n")
+        print(f"{tag.error.b()}[-] ERROR:{tag.error} Key extension not recognized.\r\nGiven filename: {tag.id}{filename}{tag.close}\r\n")
         raise ValueError('key extension not supported')

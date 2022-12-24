@@ -3,6 +3,13 @@
 
 import hashlib
 
+hash_sizes = {
+    'SHA1' : 40,
+    'MD5' : 32,
+    'SHA256' : 64
+}
+
+# 40 units
 class sha_1():
     def __init__(self) -> None:
         self.res = ""
@@ -36,6 +43,7 @@ class sha_1():
     # def BlockSize(self):
     #     return self.res.block_size
 
+# 32 units
 class md_5():
     def __init__(self) -> None:
         self.res = ""
@@ -52,6 +60,16 @@ class md_5():
                 block = f.read(512)
 
             f.close()
+
+        return hasher.hexdigest()
+
+    @staticmethod
+    def hash_bytes(a_bytes) -> str:
+        hasher = hashlib.new('md5')
+
+        for byte_index in range(0, len(a_bytes), 512):
+            block = a_bytes[byte_index: byte_index + 512]
+            hasher.update(block)
 
         return hasher.hexdigest()
     # def hash_file(self, filename):
@@ -71,6 +89,7 @@ class md_5():
     # def BlockSize(self):
     #     return self.res.block_size
     
+# 64 units
 class sha_256():
     def __init__(self) -> None:
         self.res = ""
