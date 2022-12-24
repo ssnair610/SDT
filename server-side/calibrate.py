@@ -10,7 +10,6 @@ import re
 
 __home__ = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(__home__))
-__home__ += "/"
 
 from mytoolkit.txttag import TextTag as tag
 
@@ -26,14 +25,14 @@ if __name__ == "__main__":
     port = args.port
 
     proc = subprocess.check_output("ipconfig").decode('utf-8')
-    findings = re.findall(r'([\w\-\* ]*\w):[\w\-\*\%\=\<\>\[\]\:\.\s]+?IPv4 Address. . . . . . . . . . . : (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})', proc)
+    findings = re.findall(r'([\w\-\* ]*\w):(\s*.*\. :\s*)IPv4 Address. . . . . . . . . . . : (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})', proc)
 
     IPMap = dict()
 
     for finding in findings:
-        IPMap[finding[0]] = finding[1]
+        IPMap[finding[0]] = finding[2]
 
-    config_file = open(f"{__home__}config.json", "r")
+    config_file = open(f"{__home__}/config.json", "r")
     
     configuration = json.load(config_file)
 
@@ -50,7 +49,7 @@ if __name__ == "__main__":
     
         config_file.close()
     
-    config_file = open(f"{__home__}config.json", "w")
+    config_file = open(f"{__home__}/config.json", "w")
     
     json.dump(configuration, config_file, indent=4)
     

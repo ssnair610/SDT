@@ -44,7 +44,8 @@ progress = tqdm.tqdm(
     unit="B", unit_scale=True, unit_divisor=1024
     )
 
-inbound_file_addr = f'{__home__}/inbound/{filename}'
+os.makedirs(f'{__home__}/inbound/{hash(address)}')
+inbound_file_addr = f'{__home__}/inbound/{hash(address)}/{filename}'
 
 with open(inbound_file_addr, "wb") as file_b:
     while True:
@@ -58,9 +59,11 @@ with open(inbound_file_addr, "wb") as file_b:
 
     file_b.flush() # Prompt I/O Buffer to write immediately
 
+file_b.close()    
+
+# client_socket.send('\0'.encode())
 
 client_socket.close()
 socket_ref.close()
 
 targetDir = os.path.splitext(os.path.splitext(inbound_file_addr)[0])[0]
-# shutil.unpack_archive(inbound_file_addr, targetDir, 'zip')
