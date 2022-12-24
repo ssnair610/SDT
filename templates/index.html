@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title> Report</title>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <style>
+            h1 {
+              font-size: 20px;
+              margin-top: 24px;
+              margin-bottom: 24px;
+            }
+
+            img {
+            height: 60px;
+            }
+            body,h1,h2,h3,h4,h5,h6 {
+              font-family: "Lato", sans-serif;
+            }
+            .w3-bar,h1,button {
+              font-family: "Montserrat", sans-serif;
+            }
+            .fa-anchor,.fa-coffee {
+              font-size: 200px;
+            }
+            .w3-container{
+                height: 30px;
+            }
+        </style>
+    </head>
+    <body>
+   <div class="col-md-6 offset-md-3 mt-5">
+     <h1>Encryption of Data</h1>
+     <form accept-charset="UTF-8" action="http://127.0.0.1:5000/fileupload" method="POST" enctype="multipart/form-data">
+        <div class="form-group mt-3">
+            <label class="mr-2">Upload File:</label>
+            <input type="file" accept=".txt" name="file">
+        </div>
+        <br>
+       <div class="form-group">
+         <!-- 3 radio group and 5 options -->
+         <h5>Encryption Algorithm - 1</h5>
+         <fieldset id="E0">
+            <input type="radio" value="RSA" name="E0">RSA <br>
+            <input type="radio"  value="DES" name="E0">DES <br>
+            <input type="radio"  value="AES" name="E0">AES <br>
+            
+            <input type="radio" value="ElGamal" name="E0">ElGamal <br>
+            <input type="radio" value="Rabin" name="E0">Rabin <br>
+            <input type="radio" value="Elliptic Curve Cryptosystem" name="E0">Elliptic Curve Cryptosystem
+        </fieldset>
+        <br>
+     
+        <h5>Encryption Algorithm - 2 (Optional)</h5>
+        <fieldset id="E1">
+          <input type="radio" value="None" name="E1">None <br>
+            <input type="radio" value="RSA" name="E1">RSA <br>
+            <input type="radio" value="DES" name="E1">DES <br>
+            <input type="radio"  value="AES" name="E1">AES <br>
+            <input type="radio" value="ElGamal" name="E1">ElGamal <br>
+            <input type="radio" value="Rabin" name="E1">Rabin <br>
+            <input type="radio" value="Elliptic Curve Cryptosystem" name="E1">Elliptic Curve Cryptosystem
+        </fieldset>
+
+        <br>
+
+        <h5>Hashing</h5>
+        <fieldset id="H0">
+            <input type="radio" value="SHA1" name="H0">SHA-1 <br>
+            <input type="radio" value="SHA256" name="H0">SHA-256 <br>
+            <input type="radio" value="MD5" name="H0">MD5 <br>
+            <input type="radio" value="SNEFRU" name="H0">SNEFRU <br>
+            <input type="radio" value="HAVAL" name="H0">HAVAL 
+        </fieldset>
+      
+       </div>
+       <hr>
+       Submit process request
+       <button type="submit" class="btn btn-primary">Submit</button>
+     </form>
+ </div> 
+ </body>
+</html>
