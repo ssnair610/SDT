@@ -122,21 +122,21 @@ class haval():
     def __init__(self) -> None:
         self.res = ""
 
-        @staticmethod
-        def hash_file(filename):
-            hashfunc = chilkat.CkCrypt2()
+    @staticmethod
+    def hash_file(filename):
+        hashfunc = chilkat.CkCrypt2()
 
-            hashfunc.put_HashAlgorithm("haval")
-            hashfunc.put_EncodingMode("Base64")
-            hashfunc.put_HavalRounds(5)
-            hashfunc.put_KeyLength(256)
+        hashfunc.put_HashAlgorithm("haval")
+        hashfunc.put_EncodingMode("Base64")
+        hashfunc.put_HavalRounds(5)
+        hashfunc.put_KeyLength(256)
 
-            with open(filename,"rb") as f:
+        with open(filename,"rb") as f:
+            block = f.read(512)
+            hesh = ""
+            while block:
+                hesh_str = hashfunc.hashStringENC(block) #hashBytes?
                 block = f.read(512)
-                hesh = ""
-                while block:
-                    hesh_str = hashfunc.hashStringENC(block) #hashBytes?
-                    block = f.read(512)
-                    hesh += hesh_str
-            
-            return hesh
+                hesh += hesh_str
+        
+        return hesh
