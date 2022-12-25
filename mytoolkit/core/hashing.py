@@ -2,6 +2,7 @@
 """
 
 import hashlib
+import chilkat
 
 hash_sizes = {
     'SHA1' : 40,
@@ -116,3 +117,26 @@ class sha_256():
     
     # def BlockSize(self):
     #     return self.res.block_size
+
+class haval():
+    def __init__(self) -> None:
+        self.res = ""
+
+        @staticmethod
+        def hash_file(filename):
+            hashfunc = chilkat.CkCrypt2()
+
+            hashfunc.put_HashAlgorithm("haval")
+            hashfunc.put_EncodingMode("Base64")
+            hashfunc.put_HavalRounds(5)
+            hashfunc.put_KeyLength(256)
+
+            with open(filename,"rb") as f:
+                block = f.read(512)
+                hesh = ""
+                while block:
+                    hesh_str = hashfunc.hashStringENC(block) #hashBytes?
+                    block = f.read(512)
+                    hesh += hesh_str
+            
+            return hesh
