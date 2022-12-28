@@ -1,0 +1,206 @@
+h1{
+  transform: translate(35%, 0px);
+}
+
+.hidden{
+  display: none;
+}
+
+#RSA0:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#RSA0:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+#DES0:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#DES0:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+#AES0:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#AES0:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+#ELGamal0:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#ELGamal0:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+#Rabin0:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#Rabin0:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+#ECC0:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#ECC0:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+
+#None:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#None:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+#RSA1:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#RSA1:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+}
+
+#DES1:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#DES1:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+#AES1:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#AES1:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+#ELGamal1:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#ELGamal1:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+#Rabin1:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#Rabin1:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+#ECC1:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#ECC1:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+
+#SHA-1:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#SHA-1:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+#SHA-256:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#SHA-256:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+#MD5:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#MD5:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+#SNEFRU:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#SNEFRU:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+#HAVAL:checked+ .button-label{
+  background-color: royalblue;
+
+}
+#HAVAL:not(:checked)+ .button-label{
+  background-color: white;
+  color: black;
+
+}
+
+
+.custom-file-button input[type=file] {
+  margin-left: -2px !important;
+}
+
+.custom-file-button input[type=file]::-webkit-file-upload-button {
+  display: none;
+}
+
+.custom-file-button input[type=file]::file-selector-button {
+  display: none;
+}
+
+.custom-file-button:hover label {
+  background-color: #dde0e3;
+  cursor: pointer;
+}
