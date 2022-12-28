@@ -2,7 +2,7 @@
 """
 
 import socket
-import shutil
+import time
 import json
 import tqdm
 import sys
@@ -12,6 +12,8 @@ __home__ = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(__home__))
 
 from mytoolkit.txttag import TextTag as tag
+
+__analysis_dir__ = __home__ + '/analysis.json'
 
 config_file = open(f'{__home__}/config.json', 'r')
 configuration = json.load(config_file)
@@ -48,6 +50,8 @@ os.makedirs(f'{__home__}/inbound/{hash(address)}')
 inbound_file_addr = f'{__home__}/inbound/{hash(address)}/{filename}'
 
 with open(inbound_file_addr, "wb") as file_b:
+    clock = time.perf_counter()
+
     while True:
         bytes_read = client_socket.recv(BUFFER_SIZE)
 
@@ -57,9 +61,17 @@ with open(inbound_file_addr, "wb") as file_b:
         file_b.write(bytes_read)
         progress.update(len(bytes_read))
 
-    file_b.flush() # Prompt I/O Buffer to write immediately
+    clock = time.perf_counter() - clock
 
-file_b.close()    
+    with open(__analysis_dir__, 'r') as analysis_file:
+        analysis = json.load(analysis_file)
+        analysis['transmit time'] = clock
+        analysis['throughput'] = analysis['encrypted archive size'] / clock
+
+    with open(__analysis_dir__, 'w') as analysis_file:
+        analysis = json.dump(analysis, analysis_file, indent=4)
+
+    file_b.flush() # Prompt I/O Buffer to write immediately  
 
 # client_socket.send('\0'.encode())
 
