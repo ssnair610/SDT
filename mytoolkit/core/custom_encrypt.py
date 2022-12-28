@@ -2,47 +2,7 @@
 import sys
 
 # import passlib
-import rsa
 # from Crypto.Hash import SHA1
-
-class rsa_alg():
-	@staticmethod
-	def generateKeys():
-		(publicKey, privateKey) = rsa.newkeys(1024)
-		with open('keys/publcKey.pem', 'wb') as p:
-			p.write(publicKey.save_pkcs1('PEM'))
-		with open('keys/privateKey.pem', 'wb') as p:
-			p.write(privateKey.save_pkcs1('PEM'))
-
-	@staticmethod
-	def loadKeys():
-		with open('keys/publicKey.pem', 'rb') as p:
-			publicKey = rsa.PublicKey.load_pkcs1(p.read())
-		with open('keys/privateKey.pem', 'rb') as p:
-			privateKey = rsa.PrivateKey.load_pkcs1(p.read())
-		return privateKey, publicKey
-	
-	@staticmethod
-	def encrypt(message, key):
-		return rsa.encrypt(message.encode('ascii'), key)
-	
-	@staticmethod
-	def decrypt(ciphertext, key):
-		try:
-			return rsa.decrypt(ciphertext, key).decode('ascii')
-		except:
-			return False
-		
-	@staticmethod
-	def sign(message, key):
-		return rsa.sign(message.encode('ascii'), key, 'SHA-1')
-	
-	@staticmethod
-	def verify(message, signature, key):
-		try:
-			return rsa.verify(message.encode('ascii'), signature, key,) == 'SHA-1'
-		except:
-			return False
 
 py_version = sys.version_info[0]
 
@@ -50,7 +10,7 @@ ECB =	0
 CBC =	1
 
 PAD_NORMAL = 1
-PAD_PKCS5 = 2        
+PAD_PKCS5 = 2
 
 class _baseDes(object):
 	def __init__(self, mode=ECB, IV=None, pad=None, padmode=PAD_NORMAL):
