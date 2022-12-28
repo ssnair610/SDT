@@ -11,6 +11,9 @@ import os
 __home__ = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(__home__))
 
+__analysis_dir__ = os.path.dirname(__home__) + '/server-side/analysis.json'
+__sync__ = os.path.dirname(__home__) + '/sync.state'
+
 from mytoolkit.core.keymaker import generateAtDir as make_key_at
 from mytoolkit.txttag import TextTag as tag
 from mytoolkit.core.brain import fileThinker as thinker
@@ -52,6 +55,8 @@ def pack_package() -> str:
     """
     # Zip the container directory and store it in the parent directory
     compr_file = shutil.make_archive(f"{__home__}/outbound/container", 'zip', f'{__home__}/outbound/container')
+    
+
     files_to_kill = os.listdir(f'{__home__}/outbound/container')
 
     for file in files_to_kill:
@@ -66,9 +71,17 @@ def pack_package() -> str:
 
     # Using contract process file; File is taken from metadata directory
     # Output is written into encr_file, Input from compr_file
-    myThinker = thinker(sourceFile = compr_file, targetFile = encr_file, keyAddress=f'{__home__}/metadata/')
+    myThinker = thinker(sourceFile = compr_file, targetFile = encr_file, keyAddress=f'{__home__}/metadata/', name='client')
     myThinker.think(contract=alg_contract)
     myThinker.close()
+
+    with open(__analysis_dir__, 'r') as analysis_file:
+        analysis = json.load(analysis_file)
+        analysis['archive size'] = os.path.getsize(compr_file)
+        analysis['encrypted archive size'] = os.path.getsize(encr_file)
+    
+    with open(__analysis_dir__, 'w') as analysis_file:
+        json.dump(analysis, analysis_file, indent=4)
 
     # Delete original unprocessed file
     os.remove(compr_file)
@@ -132,7 +145,17 @@ def pack_and_ship(host:str, port:str) -> None:
         
     except Exception as e:
         print(f'\r\n{tag.error.b()}ERROR:{tag.error} package failure: {tag.close}\n\r{e}')
-        exit(1)
+        raise e
+
+def open_sync():
+    with open(__sync__, 'w') as sync_file:
+        sync_file.write('0')
+
+def close_sync():
+    while True:
+        with open(__sync__, 'r') as sync_file:
+            if sync_file.readline() != '0':
+                break
 
 if __name__ == "__main__":
     # get server configurations
@@ -141,7 +164,15 @@ if __name__ == "__main__":
     configuration = fetch_config()
 
     # Process and send container to server wrt config file
-    pack_and_ship(
-            configuration["serverIP"],
-            configuration["vanilla port"]
-    )
+    try:
+        open_sync()
+
+        pack_and_ship(
+                configuration["serverIP"],
+                configuration["vanilla port"]
+        )
+    
+        close_sync()
+
+    except Exception as e:
+        raise e
