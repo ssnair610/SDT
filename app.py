@@ -12,7 +12,7 @@ def home():
 @app.route('/fileupload',methods=['POST'])
 def fileupload():
     uploaded_file = request.files['file']
-    uploaded_file.save(os.path.join(f'{__home__}/client-side/outbound/container', str(uploaded_file.filename)))
+    uploaded_file.save(os.path.join(f'{__home__}/client-side/outbound/container/', str(uploaded_file.filename)))
     data = request.form
 
     with open(f'{__home__}/client-side/outbound/algorithm contract.json', 'w') as alg_contract_file:
