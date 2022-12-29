@@ -10,6 +10,17 @@ import shutil
 import json
 import sys
 import os
+import logging
+
+b_logger = logging.getLogger("Brain logger")
+b_logger.propagate = False
+b_logger.setLevel(logging.INFO)
+if not b_logger.handlers:
+    fh = logging.FileHandler(filename='brain_history.log')
+    fh.setLevel(logging.INFO)
+    formatter = logging.Formatter('[%(asctime)s][%(levelname)s] %(message)s', datefmt='%d-%m-%Y %H:%M:%S')
+    fh.setFormatter(formatter)
+    b_logger.addHandler(fh)
 
 __home__ = os.path.dirname(__file__)
 sys.path.append(os.path.dirname(__home__))
@@ -68,14 +79,15 @@ class fileThinker:
 				self.__dur['E1'] = encrypter._latest_op_time
 				encrypter._latest_op_time = 0.0
 			else:
-				
-			self.conclude()
+				self.conclude()
 		except KeyError as e:
 			print(f'\r\n{tag.error.b()}[-] ERROR:{tag.error} Contract incomplete. Can not find term {tag.info.b()}{e}{tag.close}\r\n')
+			b_logger.error("Incomplete contract.")
 			raise e
 
 		except Exception as e:
 			print(f'\r\n{tag.error.b()}[-] ERROR:{tag.error} {tag.id.b()}enforce(){tag.error} encountered exception in {tag.id.b()}{__file__}{tag.close}\r\n{e}')
+			b_logger.exception("Exception encountered.")
 			raise e
 
 	def unthink(self, contract:dict) -> bool:
@@ -85,6 +97,7 @@ class fileThinker:
 			hashcode:bytes = self.__tgt.read(hash_size)
 
 			print(f'{tag.info.b()}Hash code from file: {tag.id}{hashcode}{tag.close}')
+			b_logger.info("File re-hashed.")
 
 			self.__tgt.seek(0)
 			self.__tgt.truncate(hashlesssize)
@@ -110,10 +123,12 @@ class fileThinker:
 
 		except KeyError as e:
 			print(f'\r\n{tag.error.b()}[-] ERROR:{tag.error} Contract incomplete. Can not find term {tag.info.b()}{e}{tag.close}\r\n')
+			b_logger.error("Incomplete contract.")
 			raise e
 
 		except Exception as e:
 			print(f'\r\n{tag.error.b()}[-] ERROR:{tag.error} {tag.id.b()}think(){tag.error} encountered exception in {tag.id.b()}{__file__}{tag.close}\r\n{e}')
+			b_logger.exception("Exception encountered.")
 			raise e
 
 	def keyAddr(self) -> str:
@@ -141,10 +156,12 @@ class fileThinker:
 			ciphertext = self.__tgt.read(cipher_size)
 			
 			print(f"\r\n{tag.info}ciphertext: {tag.id}{ciphertext}{tag.close}")
+			b_logger.info("Cipher text generated.")
 			plaintext = self.decryptb(self.decryptb(ciphertext, mode=contract['E1']), mode=contract['E0'])
 			# print(f"\r\n{tag.info}plaintext: {tag.id}{plaintext}{tag.close}")
 			hasheddata = self.hashb(plaintext, mode=contract['H0'])
 			print(f"\r\n{tag.info}hashed data: {tag.id}{hasheddata}{tag.close}")
+			b_logger.info("Hash data generated.")
 			# print(f"\r\n{tag.info}hashcode: {tag.id}{hashcode}{tag.close}")
 
 			return hasheddata == self.__hashcode
@@ -225,7 +242,7 @@ class fileThinker:
 			return
 
 		print(f'\r\n{tag.info.b()}[*]{tag.info} Encrypting to {tag.id}{self.__tgt.name}{tag.info} with {tag.id}{mode}{tag.close}')
-
+		b_logger.info("Encryption invoked.")
 		try:
 			key = keymaker.getFromFile(self.__kaddr)
 			ciphertext = None
@@ -246,9 +263,11 @@ class fileThinker:
 				self.__tgt.flush()
 
 				print(f'\r\n{tag.info.b()}[+]{tag.info} Encryption done.{tag.close}')
+				b_logger.info("Encryption terminated.")
 
 		except Exception as e:
 			print(f'\r\n{tag.error.b()}[-] ERROR:{tag.error} {tag.id.b()}encrypt(){tag.error} encountered exception in {tag.id.b()}{__file__}{tag.close}\r\n{e}')
+			b_logger.error("Encounted exception.")
 			raise e
 
 	def decrypt(self, mode:str) -> None:
@@ -256,7 +275,7 @@ class fileThinker:
 			return
 
 		print(f'\r\n{tag.info.b()}[*]{tag.info} Decrypting to {tag.id}{self.__tgt.name}{tag.info} with {tag.id}{mode}{tag.close}')
-		
+		b_logger.info("Decryption invoked.")
 		try:
 			key = keymaker.getFromFile(self.__kaddr)
 			plaintext = None
@@ -276,13 +295,16 @@ class fileThinker:
 				self.__tgt.flush()
 
 				print(f'\r\n{tag.info.b()}[+]{tag.info} Decryption done.{tag.close}')
-
+				b_logger.info("Decryption terminated.")
+		
 		except Exception as e:
 			print(f'\r\n{tag.error.b()}[-] ERROR:{tag.error} {tag.id.b()}decrypt(){tag.error} encountered exception in {tag.id.b()}{__file__}{tag.close}\r\n{e}')
+			b_logger.error("Decryption exception encountered.")
 			raise e
 
 	def hash(self, mode:str) -> None:
 		print(f'\r\n{tag.info.b()}[*]{tag.info} Hashing file with {tag.id}{mode}{tag.close}')
+		b_logger.info("Hashing invoked.")
 		self.__tgt.seek(0)
 
 		try:
@@ -296,6 +318,7 @@ class fileThinker:
 				hashcode = hasher.haval.hash_file(filename=self.__tgt.name)
 			else:
 				print(f'{tag.error.b()}ERROR:{tag.error} Hashing mode not supported/recognized.{tag.close}')
+				b_logger.error("Invalid hashing function.")
 				hashcode = ''
 
 			self.__hashcode = hashcode.encode()
@@ -303,6 +326,7 @@ class fileThinker:
 
 		except Exception as e:
 			print(f'\r\n{tag.error.b()}[-] ERROR:{tag.error} {tag.id.b()}hash(){tag.error} encountered exception in {tag.id.b()}{__file__}{tag.close}\r\n{e}')
+			b_logger.exception("Unexpected exception encountered.")
 			raise e
 	
 	def conclude(self, append_hash:bool = True) -> None:
@@ -312,12 +336,14 @@ class fileThinker:
 
 		if append_hash:
 			print(f'\r\n{tag.info.b()}[*]{tag.info} Appending digest to {tag.id}{self.__tgt.name}{tag.close}')
+			b_logger.info("Digest append invoked.")
 			self.__tgt.seek(0, os.SEEK_END)
 			self.__tgt.write(self.__hashcode)
 		
 		self.__tgt.flush()
 
 		print(f'\r\n{tag.info.b()}[+]{tag.info} Digest appended.{tag.close}')
+		b_logger.info("Digest appended.")
 
 		analysis_file = open(__analysis_dir__, 'r')
 		
@@ -338,6 +364,7 @@ class fileThinker:
 
 	def close(self) -> None:
 		print(f'\r\n{tag.info.b()}[+]{tag.info} File processing completed.{tag.close}')
+		b_logger.info("File processed.")
 
 		self.__tgt.close()
 
