@@ -7,20 +7,9 @@ import json
 import tqdm
 import sys
 import os
-import logging
 
 __home__ = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(__home__))
-
-client_logger = logging.getLogger("Client logger")
-client_logger.propagate = False
-client_logger.setLevel(logging.INFO)
-if not client_logger.handlers:
-    fh = logging.FileHandler(filename='c_history.log')
-    fh.setLevel(logging.INFO)
-    formatter = logging.Formatter('[%(asctime)s][%(levelname)s] %(message)s', datefmt='%d-%m-%Y %H:%M:%S')
-    fh.setFormatter(formatter)
-    client_logger.addHandler(fh)
 
 from mytoolkit.txttag import TextTag as tag
 
@@ -42,11 +31,9 @@ socket_ref.bind((SERVER_HOST, SERVER_PORT))
 
 socket_ref.listen(5)
 print(f"{tag.info.b()}[*]{tag.info} Listening as {tag.id}{SERVER_HOST}{tag.white}:{tag.id}{SERVER_PORT}{tag.close}")
-client_logger.info("Client %s listening as %s %s", tag.info, SERVER_HOST, SERVER_PORT)
 
 client_socket, address = socket_ref.accept()
 print(f"{tag.info.b()}[+] {tag.id}{address}{tag.info} is connected.{tag.close}")
-client_logger.info("Client %s is connected", address)
 
 received = client_socket.recv(BUFFER_SIZE).decode()
 filename, filesize = received.split(SEPARATOR)
