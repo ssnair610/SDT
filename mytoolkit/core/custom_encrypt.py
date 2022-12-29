@@ -1,6 +1,6 @@
 # import logging as lg
 import sys
-
+from Crypto.Cipher import AES as cry_aes
 # import passlib
 # from Crypto.Hash import SHA1
 
@@ -797,3 +797,22 @@ class AES(base_aes):
 # print(f"{tag.info}{type(dec)}{tag.white}:{tag.id}{dec}{tag.close}")
 # dec = _des.decrypt(dec, padmode=PAD_PKCS5).decode()
 # print(f"{tag.info}{type(dec)}{tag.white}:{tag.id}{dec}{tag.close}")
+
+
+class aes():
+	
+	#aes_ins = cry_aes.new(key, mode = cry_aes.MODE_EAX)
+	#nonce = aes_ins.nonce
+
+	def encrypt(self, pt, key, aes_ins):
+		# aes_ins = cry_aes.new(key, mode = cry_aes.MODE_EAX)
+		# nonce = aes_ins.nonce
+		cipher_text = aes_ins.encrypt(pt)
+		return cipher_text
+	
+	def decrypt(self, ct, key, aes_ins):
+		# aes_ins = cry_aes.new(key, mode = cry_aes.MODE_EAX)
+		# nonce = aes_ins.nonce
+		plain_text = aes_ins.decrypt(ct)
+		return plain_text
+
