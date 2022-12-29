@@ -47,7 +47,7 @@
 
         <div class="input-group custom-file-button">
           <label class="input-group-text" for="inputGroupFile" style="background-color: royalblue;color: white;">Choose File</label>
-          <input type="file" accept=".txt" name="file" class="form-control" id="inputGroupFile">
+          <input type="file" name="file" class="form-control" id="inputGroupFile">
         </div>
       
       </div>
@@ -60,12 +60,10 @@
          <fieldset id="E0">
             <input type="radio"  value="DES" name="E0" id="DES0" class="hidden"> 
             <label for="DES0" class="button-label btn btn-primary" >DES</label>
-            <input type="radio"  value="AES" name="E0" id="AES0" class="hidden"> 
-            <label for="AES0" class="button-label btn btn-primary" >AES</label>  
-            <input type="radio" value="Rabin" name="E0" id="Rabin0" class="hidden"> 
-            <label for="Rabin0" class="button-label btn btn-primary" >Rabin</label>
-            <input type="radio" value="Elliptic Curve Cryptosystem" name="E0" id="ECC0" class="hidden">
-            <label for="ECC0" class="button-label btn btn-primary">Elliptic Curve Cryptosystem</label>
+            <input type="radio"  value="Fernet" name="E0" id="Fernet0" class="hidden"> 
+            <label for="Fernet0" class="button-label btn btn-primary" >Fernet</label>  
+            <input type="radio"  value="RC6" name="E0" id="RC60" class="hidden"> 
+            <label for="RC60" class="button-label btn btn-primary" >RC6</label>  
         </fieldset>
         <br>
           
@@ -75,12 +73,10 @@
             <label for="None" class="button-label btn btn-primary">None</label>
             <input type="radio" value="DES" name="E1" id="DES1" class="hidden">
             <label for="DES1" class="button-label btn btn-primary">DES</label>
-            <input type="radio"  value="AES" name="E1" id="AES1" class="hidden">
-            <label for="AES1" class="button-label btn btn-primary">AES</label>  
-            <input type="radio" value="Rabin" name="E1" id="Rabin1" class="hidden">
-            <label for="Rabin1" class="button-label btn btn-primary">Rabin</label>
-            <input type="radio" value="Elliptic Curve Cryptosystem" name="E1" id="ECC1" class="hidden">
-            <label for="ECC1" class="button-label btn btn-primary">Elliptic Curve Cryptosystem</label>
+            <input type="radio"  value="Fernet" name="E1" id="Fernet1" class="hidden">
+            <label for="Fernet1" class="button-label btn btn-primary">Fernet</label>  
+            <input type="radio"  value="RC6" name="E1" id="RC61" class="hidden">
+            <label for="RC61" class="button-label btn btn-primary">RC6</label>  
         </fieldset>
 
         <br>
@@ -93,8 +89,6 @@
             <label for="SHA-256" class="button-label btn btn-primary">SHA-256 </label>
             <input type="radio" value="MD5" name="H0" id="MD5" class="hidden">
             <label for="MD5" class="button-label btn btn-primary">MD5</label>
-            <input type="radio" value="SNEFRU" name="H0" id="SNEFRU" class="hidden">
-            <label for="SNEFRU" class="button-label btn btn-primary">SNEFRU</label>
             <input type="radio" value="HAVAL" name="H0" id="HAVAL" class="hidden"> 
             <label for="HAVAL" class="button-label btn btn-primary">HAVAL</label>
         </fieldset>

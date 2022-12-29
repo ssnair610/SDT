@@ -26,46 +26,24 @@ h1{
 
 }
 
-#AES0:checked+ .button-label{
+#Fernet0:checked+ .button-label{
   background-color: royalblue;
 
 }
-#AES0:not(:checked)+ .button-label{
+#Fernet0:not(:checked)+ .button-label{
   background-color: white;
   color: black;
 
 }
-
-#ELGamal0:checked+ .button-label{
+#RC60:checked+ .button-label{
   background-color: royalblue;
 
 }
-#ELGamal0:not(:checked)+ .button-label{
+#RC60:not(:checked)+ .button-label{
   background-color: white;
   color: black;
 
 }
-
-#Rabin0:checked+ .button-label{
-  background-color: royalblue;
-
-}
-#Rabin0:not(:checked)+ .button-label{
-  background-color: white;
-  color: black;
-
-}
-
-#ECC0:checked+ .button-label{
-  background-color: royalblue;
-
-}
-#ECC0:not(:checked)+ .button-label{
-  background-color: white;
-  color: black;
-
-}
-
 
 #None:checked+ .button-label{
   background-color: royalblue;
@@ -96,41 +74,21 @@ h1{
 
 }
 
-#AES1:checked+ .button-label{
+#Fernet1:checked+ .button-label{
   background-color: royalblue;
 
 }
-#AES1:not(:checked)+ .button-label{
+#Fernet1:not(:checked)+ .button-label{
   background-color: white;
   color: black;
 
 }
 
-#ELGamal1:checked+ .button-label{
+#RC61:checked+ .button-label{
   background-color: royalblue;
 
 }
-#ELGamal1:not(:checked)+ .button-label{
-  background-color: white;
-  color: black;
-
-}
-
-#Rabin1:checked+ .button-label{
-  background-color: royalblue;
-
-}
-#Rabin1:not(:checked)+ .button-label{
-  background-color: white;
-  color: black;
-
-}
-
-#ECC1:checked+ .button-label{
-  background-color: royalblue;
-
-}
-#ECC1:not(:checked)+ .button-label{
+#RC61:not(:checked)+ .button-label{
   background-color: white;
   color: black;
 
